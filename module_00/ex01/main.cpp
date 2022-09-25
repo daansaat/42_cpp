@@ -4,9 +4,18 @@
 #include <string>
 #include <fstream>
 
+#define BLACK "\033[0;30m"
+#define RED "\033[0;31m"
+#define CYAN "\033[0;36m"
+#define RESET "\033[0m"
+
+static void	print(const char *color, const char *text) {
+	std::cout << color << text << RESET;
+}
+
 static void	cmd_add(Phonebook *phonebook, int *index) {
 	phonebook->add(*index);
-	std::cout << "\033[0;30mContact added to phonebook.\033[0m" << std::endl;
+	print(BLACK, "Contact added to phonebook\n");
 	*index = (*index + 1) % 8;
 }
 
@@ -30,15 +39,15 @@ static void	cmd_search(Phonebook *phonebook) {
 	int			index;
 
 	if (!phonebook->search())
-		std::cout << "\033[0;30mNo saved contacts.\033[0m" << std::endl;
+		print(BLACK, "No saved contacts.\n");
 	else {
-		std::cout << "\033[0;30mSelect index to view entry: \033[0m";
+		print(BLACK, "Select index to view entry: ");
 		while (!get_integer(&index) || index > 8) {
-			std::cout << "\033[0;31minvalid index\033[0m" << std::endl;
-			std::cout << "\033[0;30mSelect index to view entry: \033[0m";
+			print(RED, "invalid index\n");
+			print(BLACK, "Select index to view entry: ");
 		}
 		if (!phonebook->search(index - 1))
-			std::cout << "\033[0;30mNo entry.\033[0m" << std::endl;
+			print(BLACK, "No entry.\n");
 	}
 }
 
@@ -48,12 +57,12 @@ int	main(void)
 	std::string	input;
 	int			index;
 
-	std::cout << "\n\033[0;30mADD: save a new contact\n";
-	std::cout << "SEARCH: display a specific contact\n";
-	std::cout << "EXIT: exit program\033[0m\n\n";
+	print(BLACK, "\nADD: save a new contact\n");
+	print(BLACK, "SEARCH: display a specific contact\n");
+	print(BLACK, "EXIT: exit program\n\n");
 	index = 0;
 	while (1) {
-		std::cout << "\033[0;36mEnter command: \033[0m";
+		print(CYAN, "Enter command: ");
 		getline(std::cin, input);
 		if (input.compare("ADD") == 0)
 			cmd_add(&phonebook, &index);
@@ -62,7 +71,7 @@ int	main(void)
 		else if (input.compare("EXIT") == 0)
 			std::exit(EXIT_SUCCESS);
 		else
-			std::cout << "\033[0;30mInvalid input.\n\033[0m";
+			print(BLACK, "Invalid input.\n");
 		std::cout << std::endl;
 	}
 	return (0);
