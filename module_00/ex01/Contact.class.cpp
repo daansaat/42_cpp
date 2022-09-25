@@ -15,7 +15,7 @@ void Contact::set_info() {
 	get_usr_input(&nickname, "Nickname");
 	get_usr_input(&phonenumber, "Phonenumber");
 	get_usr_input(&darkestsecret, "Darkest secret");
-};
+}
 
 std::string Contact::get_fn(void) {return (firstname);}
 

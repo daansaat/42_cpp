@@ -41,13 +41,13 @@ static void	cmd_search(Phonebook *phonebook) {
 	if (!phonebook->search())
 		print(BLACK, "No saved contacts.\n");
 	else {
-		print(BLACK, "Select index to view entry: ");
-		while (!get_integer(&index) || index > 8) {
-			print(RED, "invalid index\n");
-			print(BLACK, "Select index to view entry: ");
+		print(BLACK, "Select index to view entry: "); 
+		if (get_integer(&index) && index >= 0 && index < 8) {
+			if (!phonebook->search(index - 1))
+				print(BLACK, "No entry.\n");
 		}
-		if (!phonebook->search(index - 1))
-			print(BLACK, "No entry.\n");
+		else
+			print(RED, "invalid index\n");
 	}
 }
 
