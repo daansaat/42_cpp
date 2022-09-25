@@ -8,7 +8,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $^ -o $@
 
-$(OBJS): $(SRCS)
+%.o: %.cpp
 	c++ $(FLAGS) -c $< -o $@
 
 clean:
