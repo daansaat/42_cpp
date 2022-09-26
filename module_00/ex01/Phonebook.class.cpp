@@ -2,6 +2,15 @@
 #include "Contact.class.hpp"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
+
+#define BLACK "\033[0;30m"
+#define RED "\033[0;31m"
+#define RESET "\033[0m"
+
+Phonebook::Phonebook(int index) {
+	this->index = index;
+}
 
 static std::string	truncate(std::string str) {
 	if (str.length() > 10)
@@ -21,14 +30,39 @@ static void	print(std::string field, const char *str) {
 	std::cout << str << field << std::endl;
 }
 
-void	Phonebook::add(int index) {
+static int	print(const char *color, const char *text) {
+	std::cout << color << text << RESET;
+	return (0);
+}
+
+static bool	get_integer(int *index) {
+	std::string input;
+	getline(std::cin, input);
+	if (!std::cin)
+		std::exit(EXIT_SUCCESS);
+	std::stringstream converter(input);
+	int result;
+	if (converter >> result) {
+		char remaining;
+		if (converter >> remaining) {
+			return (false);
+		}
+		*index = result;
+		return (true);
+	}
+	return (false);
+}
+
+void	Phonebook::add() {
 	Contact	contact;
 
 	contact.set_info();
-	this->contact[index] = contact;
+	this->contact[this->index] = contact;
+	this->index = (this->index + 1) % 8;
+	print(BLACK, "Contact added to phonebook\n");
 }
 
-bool	Phonebook::search(void) {
+bool	Phonebook::print_phonebook(void) {
 	int	i;
 	
 	for (i = 0; !contact[i].get_fn().empty() && i < 8; i++) {
@@ -43,11 +77,11 @@ bool	Phonebook::search(void) {
 	return (true);
 }
 
-bool	Phonebook::search(int index) {
+bool	Phonebook::print_contact(int index) {
 	if (contact[index].get_fn().empty())
 		return (false);
 	else {
-		print(contact[index].get_fn(), "First name: ");
+		print(contact[index].get_fn(), "\nFirst name: ");
 		print(contact[index].get_ln(), "Last name: ");
 		print(contact[index].get_nn(), "Nickname: ");
 		print(contact[index].get_pn(), "Phonenumber: ");
@@ -55,3 +89,22 @@ bool	Phonebook::search(int index) {
 	}
 	return (true);
 }
+
+int	Phonebook::search() {
+	int	index;
+
+	if (!this->print_phonebook())
+		return (print(BLACK, "No saved contacts.\n"));
+	print(BLACK, "Select index to view entry: "); 
+	while (!get_integer(&index) || index < 1 || index > 8)
+		print(RED, "invalid index\n");
+	if (!this->print_contact(index - 1))
+		return (print(BLACK, "No entry.\n"));
+	return (0);
+}
+	// if (get_integer(&index) && index >= 1 && index <= 8) {
+	// 	if (!this->print_contact(index - 1))
+	// 		return (print(BLACK, "No entry.\n"));
+	// }
+	// else
+	// 	print(RED, "invalid index\n");

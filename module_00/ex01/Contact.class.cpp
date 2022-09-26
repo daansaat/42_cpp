@@ -4,6 +4,8 @@ static void get_usr_input(std::string *field, const char *str) {
 	while (field->empty()) {
 		std::cout << str << ": ";
 		getline(std::cin, *field);
+		if (!std::cin)
+			std::exit(EXIT_SUCCESS);
 		if (field->empty())
 			std::cout << "\033[0;31mmandatory field\n\033[0m";
 	}

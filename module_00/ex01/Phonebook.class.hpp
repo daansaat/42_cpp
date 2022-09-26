@@ -3,11 +3,14 @@
 # include "Contact.class.hpp"
 
 class Phonebook {
-	Contact contact[8];
+	Contact	contact[8];
+	int		index;
+	bool	print_phonebook();
+	bool	print_contact(int index);
 	public:
-		void add(int index);
-		bool search();
-		bool search(int index);
+		Phonebook(int index);
+		void	add();
+		int		search();
 };
 
 #endif
