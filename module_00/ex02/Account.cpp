@@ -29,7 +29,7 @@ void	Account::_displayTimestamp( void ) {
 	std::cout << "[19920104_091532] ";
 }
 
-int Account::getNbAccounts() {
+int	Account::getNbAccounts() {
     return (_nbAccounts);
 }
 
@@ -47,7 +47,7 @@ int	Account::getNbWithdrawals() {
 
 void	Account::displayAccountsInfos( void ) {
 	_displayTimestamp();
-    std::cout << "accounts:" << CYAN << getNbAccounts() << RESET;
+	std::cout << "accounts:" << CYAN << getNbAccounts() << RESET;
 	std::cout << ";total:" << CYAN << getTotalAmount() << RESET;
 	std::cout << ";deposits:" << CYAN << getNbDeposits() << RESET;
 	std::cout << ";withdrawals:" << CYAN << getNbWithdrawals() << RESET;
