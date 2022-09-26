@@ -30,7 +30,7 @@ void	Account::_displayTimestamp( void ) {
 }
 
 int	Account::getNbAccounts() {
-    return (_nbAccounts);
+	return (_nbAccounts);
 }
 
 int	Account::getTotalAmount() {
