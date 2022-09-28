@@ -3,10 +3,10 @@
 # include <iostream>
 
 class Weapon {
-	std::string	type;
+	std::string	_type;
 	public:
 		Weapon(std::string weapon);
-		std::string const&	getType(void);
+		const std::string&	getType(void);
 		void				setType(std::string weapon);
 };
 
