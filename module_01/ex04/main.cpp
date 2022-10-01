@@ -7,9 +7,8 @@ static void	ft_error(std::string errormessage, std::string argument) {
 
 static void	check_file(std::string filename, std::fstream *file, int flag) {
 	file->open(filename, flag);
-	if (file->fail()) {
+	if (file->fail())
 		ft_error("couldn't open file: ", filename);
-	}
 }
 
 int	main(int argc, char **argv) {
