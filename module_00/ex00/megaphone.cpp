@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   megaphone.cpp                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/12 11:11:02 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/12 11:11:03 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <ctype.h>
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
+    
     for (int i = 1; argv[i]; i++)
         for (int j = 0; argv[i][j]; j++)
             std::cout << (char)toupper(argv[i][j]);

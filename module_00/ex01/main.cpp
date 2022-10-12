@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.cpp                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/12 11:11:23 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/12 11:11:27 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Phonebook.class.hpp"
 #include "Contact.class.hpp"
-// #include <string>
-// #include <fstream>
 
 #define BLACK "\033[0;30m"
 #define CYAN "\033[0;36m"

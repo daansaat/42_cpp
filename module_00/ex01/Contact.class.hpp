@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Contact.class.hpp                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/12 11:11:16 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/12 11:11:20 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTACT_CLASS_HPP
 # define CONTACT_CLASS_HPP
 # include <iostream>
 
 class Contact{
+	
 	std::string firstname;
 	std::string lastname;
 	std::string nickname;

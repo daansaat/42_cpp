@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Phonebook.class.cpp                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/12 11:11:53 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/12 13:41:51 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Phonebook.class.hpp"
 #include "Contact.class.hpp"
-#include <iostream>
 #include <iomanip>
 #include <sstream>
 
@@ -57,8 +68,8 @@ void	Phonebook::add() {
 	Contact	contact;
 
 	contact.set_info();
-	this->contact[this->index] = contact;
-	this->index = (this->index + 1) % 8;
+	this->contact[index] = contact;
+	index = (index + 1) % 8;
 	print(BLACK, "Contact added to phonebook\n");
 }
 
@@ -85,7 +96,7 @@ bool	Phonebook::print_contact(int index) {
 		print(contact[index].get_ln(), "Last name: ");
 		print(contact[index].get_nn(), "Nickname: ");
 		print(contact[index].get_pn(), "Phonenumber: ");
-		print(contact[index].get_ds(), "Darkest secret");
+		print(contact[index].get_ds(), "Darkest secret: ");
 	}
 	return (true);
 }
@@ -93,18 +104,14 @@ bool	Phonebook::print_contact(int index) {
 int	Phonebook::search() {
 	int	index;
 
-	if (!this->print_phonebook())
+	if (!print_phonebook())
 		return (print(BLACK, "No saved contacts.\n"));
 	print(BLACK, "Select index to view entry: "); 
-	while (!get_integer(&index) || index < 1 || index > 8)
+	while (!get_integer(&index) || index < 1 || index > 8) {
 		print(RED, "invalid index\n");
-	if (!this->print_contact(index - 1))
+		print(BLACK, "Select index to view entry: "); 	
+	}
+	if (!print_contact(index - 1))
 		return (print(BLACK, "No entry.\n"));
 	return (0);
 }
-	// if (get_integer(&index) && index >= 1 && index <= 8) {
-	// 	if (!this->print_contact(index - 1))
-	// 		return (print(BLACK, "No entry.\n"));
-	// }
-	// else
-	// 	print(RED, "invalid index\n");
