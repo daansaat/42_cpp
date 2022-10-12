@@ -3,7 +3,7 @@
 # include <iostream>
 # include <cmath>
 
-class	Fixed {
+class 	Fixed {
 	
 	int					_fixedNumber;
 	static const int	_fractionalBitsNumber = 8;
