@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 11:11:53 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/10/12 13:41:51 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/10/12 19:24:53 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	Phonebook::add() {
 bool	Phonebook::print_phonebook(void) {
 	int	i;
 	
-	for (i = 0; !contact[i].get_fn().empty() && i < 8; i++) {
+	for (i = 0; i < 8 && !contact[i].get_fn().empty(); i++) {
 		print(i + 1);
 		print(contact[i].get_fn());
 		print(contact[i].get_ln());

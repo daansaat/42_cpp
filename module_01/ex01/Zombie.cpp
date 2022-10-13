@@ -1,11 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Zombie.cpp                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/13 12:24:42 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/13 12:24:43 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Zombie.hpp"
 
 Zombie::Zombie() {
-	
-}
-
-Zombie::Zombie(std::string name) {
-	this->name = name;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Zombie::~Zombie(void) {
