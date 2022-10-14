@@ -1,7 +1,5 @@
 #include "Phonebook.class.hpp"
 #include "Contact.class.hpp"
-// #include <string>
-// #include <fstream>
 
 #define BLACK "\033[0;30m"
 #define CYAN "\033[0;36m"

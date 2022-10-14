@@ -3,6 +3,7 @@
 # include <iostream>
 
 class Contact{
+	
 	std::string firstname;
 	std::string lastname;
 	std::string nickname;
