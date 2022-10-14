@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Contact.class.cpp                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/12 11:11:11 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/12 11:11:12 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.class.hpp"
 
 static void get_usr_input(std::string *field, const char *str) {

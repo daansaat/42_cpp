@@ -1,23 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.cpp                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/13 12:24:18 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/13 12:24:19 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Zombie.hpp"
-
-void	testChump() {
-	std::string	name = "eric";
-	randomChump(name);
-}
-
-Zombie	*testZombie() {
-	Zombie	*zombie;
-	std::string	name = "mary";
-	zombie = newZombie(name);
-	return (zombie);
-}
 
 int	main(void) {
 	Zombie	*zombie;
-	zombie = testZombie();
+	zombie = newZombie("mary");
 	zombie->announce();
-	testChump();
+	randomChump("eric");
 	delete zombie;
-	system("leaks zombie");
+	// system("leaks zombie");
 	return (0);
 }

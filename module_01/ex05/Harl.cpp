@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Harl.cpp                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/13 13:25:20 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/13 13:25:21 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 
 void	Harl::debug(void) {
@@ -29,6 +41,6 @@ void	Harl::complain(std::string level) {
 	std::string	levels[4] = {"debug", "info", "warning", "error"};
 	for (int i = 0; i < 4; i++) {
 		if (level == levels[i])
-			(this->*(function_ptr[i]))();
+			(this->*function_ptr[i])();
 	}
 }

@@ -1,7 +1,7 @@
-NAME = brain
+NAME = dreamjob
 FLAG = -Wall -Werror -Wextra -std=c++98
-SRCS = main.cpp
-OBJS = main.o
+SRCS = tests.cpp Account.cpp
+OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(NAME)
 

@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Account.cpp                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/12 11:53:37 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/12 14:43:03 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
 
 #define CYAN "\033[0;36m"
 #define RESET "\033[0m"
@@ -9,9 +22,8 @@ int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-Account::Account( int initial_deposit ) : _accountIndex(_nbAccounts),
+Account::Account( int initial_deposit ) : _accountIndex(_nbAccounts++),
 	_amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
-	_nbAccounts++;
 	_totalAmount += initial_deposit;
 	_displayTimestamp();
 	std::cout << "index:" << CYAN << _accountIndex << RESET;
@@ -26,7 +38,12 @@ Account::~Account( void ) {
 }
 
 void	Account::_displayTimestamp( void ) {
-	std::cout << "[19920104_091532] ";
+	std::time_t rawtime;
+	std::tm *timeinfo;
+	std::time(&rawtime);
+	timeinfo = std::localtime(&rawtime);
+	std::cout << "[" << timeinfo->tm_year + 1900 << timeinfo->tm_mon + 1 << timeinfo->tm_mday;
+	std::cout << "_" << timeinfo->tm_hour << timeinfo->tm_min << timeinfo->tm_sec << "] ";
 }
 
 int	Account::getNbAccounts() {

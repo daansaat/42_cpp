@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.cpp                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/13 12:25:08 by dsaat         #+#    #+#                 */
+/*   Updated: 2022/10/13 12:25:09 by dsaat         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
@@ -20,6 +32,6 @@ int	main(void) {
 	club.setType("some other type of club");
 	jim.attack();
 	}
-	system("leaks unnecessary_violence");
+	// system("leaks unnecessary_violence");
 	return (0);
 }

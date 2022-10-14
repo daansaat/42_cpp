@@ -1,19 +1,20 @@
-NAME = zombie
-FLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = newZombie.cpp main.cpp Zombie.cpp randomChump.cpp 
+NAME = fixed
+FLAGS = -Wall -Werror -Wextra -I -std=c++98
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
+HEAD = Fixed.hpp
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $^ -o $@
 
-obj/%.o: %.cpp
+obj/%.o: %.cpp $(HEAD)
 	@mkdir -p obj
 	c++ $(FLAGS) -c $< -o $@
 
 clean:
-	rm -rdf obj
+	rm -rfd obj
 
 fclean: clean
 	rm -f $(NAME)
