@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 13:54:54 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/10/15 08:55:13 by daansaat      ########   odam.nl         */
+/*   Updated: 2022/10/15 19:33:22 by daansaat      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int main( void ) {
 
 	// One of the vertexes
 	std::cout << std::endl << "Triangle:";
-	std::cout << " Ta: " << Ta.getX() << ", " << Ta.getY();
-	std::cout << " Tb: " << Tb.getX() << ", " << Tb.getY();
-	std::cout << " Tc: " << Tc.getX() << ", " << Tc.getY() << std::endl;
+	std::cout << " a[" << Ta.getX() << ", " << Ta.getY();
+	std::cout << "] b[" << Tb.getX() << ", " << Tb.getY();
+	std::cout << "] c[" << Tc.getX() << ", " << Tc.getY() << "]" << std::endl;
 	std::cout << std::endl;
 	std::cout << "P1: one of the vertexes, should be false" << std::endl;
 	std::cout << "x: " << P1.getX() << " y: " << P1.getY() << std::endl;

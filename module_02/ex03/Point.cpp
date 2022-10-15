@@ -28,7 +28,7 @@ Point::~Point() {
 }
 
 
-const Point& Point::operator=(Point const &rhs) {
+Point& Point::operator=(Point& rhs) {
 
 	// std::cout << "Assignment operator called" << std::endl;
 	return rhs;
