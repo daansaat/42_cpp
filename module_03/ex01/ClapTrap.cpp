@@ -42,6 +42,54 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
 }
 
 
+void ClapTrap::set_name(std::string name) {
+
+	this->_name = name;
+}
+
+
+void ClapTrap::set_hitPoints(unsigned int value) {
+
+	this->_hitPoints = value;
+}
+
+
+void ClapTrap::set_energyPoints(unsigned int value) {
+
+	this->_energyPoints = value;
+}
+
+
+void ClapTrap::set_attackDamage(unsigned int value) {
+
+	this->_attackDamage = value;
+}
+
+
+std::string ClapTrap::get_name(void) const {
+
+	return _name;
+}
+
+
+unsigned int ClapTrap::get_hitPoints(void) const {
+
+	return _hitPoints;
+}
+
+
+unsigned int ClapTrap::get_energyPoints(void) const {
+
+	return _energyPoints;
+}
+
+
+unsigned int ClapTrap::get_attackDamage(void) const {
+
+	return _attackDamage;
+}
+
+
 void ClapTrap::print_noPoints(std::string action, std::string points) {
 
 	std::cout << RED << action << this->_name << " is out of " << points << RESET << std::endl;
@@ -90,7 +138,8 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << GREEN << this->_name << " repairs itself for " << amount << "." << RESET;
 		this->_hitPoints += amount;
 		this->_energyPoints -= 1;
-		std::cout << " [hp: " << this->_hitPoints << "]" << std::endl;
+		std::cout << " [hp: " << this->_hitPoints << "]";
+		std::cout << " [ep: " << this->_energyPoints << "]" << std::endl;
 	}
 	return;
 }

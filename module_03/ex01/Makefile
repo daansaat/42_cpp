@@ -1,7 +1,7 @@
-NAME = claptrap
+NAME = scavtrap
 FLAG = -Wall -Werror -Wextra -I -std=c++98
-SRCS = main.cpp ClapTrap.cpp
-HEAD = ClapTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+HEAD = ClapTrap.hpp ScavTrap.hpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
 
 all: $(NAME)
