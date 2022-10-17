@@ -15,8 +15,11 @@ DiamondTrap::DiamondTrap(std::string name)
 
 	std::cout << "[DiamondTrap] string constructor called" << std::endl;
 	this->_hitPoints = FragTrap::_hitPoints;
-	this->ClapTrap::_energyPoints = ScavTrap::_energyPoints;
+	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
+	std::cout << this->ClapTrap::_hitPoints << "|" << this->ScavTrap::_hitPoints << "|" << this->FragTrap::_hitPoints << "|" << this->DiamondTrap::_hitPoints << std::endl;
+	std::cout << this->ClapTrap::_energyPoints << "|" << this->ScavTrap::_energyPoints << "|" << this->FragTrap::_energyPoints << "|" << this->DiamondTrap::_energyPoints << std::endl;
+	std::cout << this->ClapTrap::_attackDamage << "|" << this->ScavTrap::_attackDamage << "|" << this->FragTrap::_attackDamage << "|" << this->DiamondTrap::_attackDamage << std::endl;
 	return;
 }
 

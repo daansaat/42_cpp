@@ -6,6 +6,9 @@ ScavTrap::ScavTrap() {
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
+	std::cout << this->ClapTrap::_hitPoints << "|" << this->ScavTrap::_hitPoints << "|" << std::endl;
+	std::cout << this->ClapTrap::_energyPoints << "|" << this->ScavTrap::_energyPoints << "|" << std::endl;
+	std::cout << this->ClapTrap::_attackDamage << "|" << this->ScavTrap::_attackDamage << "|" << std::endl;
 	return;
 }
 

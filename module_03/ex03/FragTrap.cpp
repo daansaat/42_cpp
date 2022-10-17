@@ -6,6 +6,9 @@ FragTrap::FragTrap() {
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+	std::cout << this->ClapTrap::_hitPoints << "|" << this->FragTrap::_hitPoints << "|" << std::endl;
+	std::cout << this->ClapTrap::_energyPoints << "|" << this->FragTrap::_energyPoints << "|" << std::endl;
+	std::cout << this->ClapTrap::_attackDamage << "|" << this->FragTrap::_attackDamage << "|" << std::endl;
 	return;
 }
 

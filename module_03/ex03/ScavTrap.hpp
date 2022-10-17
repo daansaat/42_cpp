@@ -15,9 +15,6 @@ public:
 
 	void attack(const std::string& target);
 	void guardGate();
-
-protected:
-	unsigned int _energyPoints;
 };
 
 #endif
