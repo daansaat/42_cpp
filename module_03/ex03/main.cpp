@@ -7,7 +7,7 @@ int	main(void) {
 	std::cout << std::endl;
 	std::cout << DiamondTrap.get_name() << std::endl;
 	std::cout << "HP:  " << DiamondTrap.get_hitPoints() << std::endl;
-	std::cout << "EP:  " << DiamondTrap.DiamondTrap::get_energyPoints() << std::endl;
+	std::cout << "EP:  " << DiamondTrap.get_energyPoints() << std::endl;
 	std::cout << "ATK: " << DiamondTrap.get_attackDamage() << std::endl;
 	std::cout << std::endl;
 	DiamondTrap.attack("guy");
