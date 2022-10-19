@@ -1,8 +1,8 @@
 NAME = bureaucrat
 FLAG = -Wall -Werror -Wextra -I -std=c++98
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
-HEAD = Bureaucrat.hpp Form.hpp
+HEAD = Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 all: $(NAME)
 

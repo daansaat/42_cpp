@@ -13,11 +13,12 @@ public:
 	Form();
 	Form(std::string name, int gradeToSign, int gradeToExecute);
 	Form(const Form& src);
-	~Form();
+	virtual ~Form();
 
 	Form& operator=(const Form& rhs);
 
-	void beSigned(const Bureaucrat& bureaucrat);
+	void beSigned(const Bureaucrat& signer);
+	void beExecuted(const Bureaucrat& executor);
 
 	const std::string	getName() const;
 	bool				getSigned() const;
