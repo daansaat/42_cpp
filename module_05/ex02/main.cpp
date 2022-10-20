@@ -1,28 +1,58 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
 #define NEWLINE std::cout << std::endl;
 
 int	main(void) {
 
 	NEWLINE
 	Bureaucrat Boss("Boss", 1);
-	std::cout << Boss;
+	std::cout << Boss << std::endl;
+	Bureaucrat Intern("Intern", 137);
+	std::cout << Intern << std::endl;
 	NEWLINE
-	Bureaucrat Intern("Intern", 150);
-	std::cout << Intern;
+	{
+		ShrubberyCreationForm form("shrub");
+		ShrubberyCreationForm form2("shrub2");
+		std::cout << form << std::endl;
+		try {
+			Boss.signForm(form);
+			form2 = form;
+			Boss.executeForm(form);
+			Boss.executeForm(form2);
+			Intern.executeForm(form);
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
 	NEWLINE
-	Form Form1("Important", 1, 1);
-	std::cout << Form1;
+	{
+		RobotomyRequestForm form("Patricia");
+		std::cout << form << std::endl;
+		try {
+			Boss.signForm(form);
+			Boss.executeForm(form);
+			Intern.executeForm(form);
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
 	NEWLINE
-	Intern.signForm(Form1);
-	NEWLINE
-	Boss.signForm(Form1);
-	std::cout << Form1;
-	NEWLINE
-	Form Form2("notImportant", 150, 150);
-	std::cout << Form2;
-	NEWLINE
-	Intern.signForm(Form2);
-	std::cout << Form2;
-	NEWLINE
+	{
+		PresidentialPardonForm form("Mickey");
+		std::cout << form << std::endl;
+		try {
+			Boss.signForm(form);
+			Boss.executeForm(form);
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
+	
 	return 0;
 }

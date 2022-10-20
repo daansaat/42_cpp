@@ -2,7 +2,7 @@
 
 Bureaucrat::Bureaucrat() {
 
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << GREY << "Default constructor called." << RESET << std::endl;
 	return;
 }
 
@@ -10,7 +10,7 @@ Bureaucrat::Bureaucrat() {
 Bureaucrat::Bureaucrat(std::string name, int grade)
 : _name(name) {
 
-	std::cout << "String, int constructor called." << std::endl;
+	std::cout << GREY << "String, int constructor called." << RESET << std::endl;
 	if (grade < 1)
 		throw(GradeTooHighException());
 	else if (grade > 150)
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 Bureaucrat::Bureaucrat(const Bureaucrat& src)
 : _name(src._name) {
 
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << GREY << "Copy constructor called." << RESET << std::endl;
 	*this = src;
 	return;
 }
@@ -31,14 +31,14 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src)
 
 Bureaucrat::~Bureaucrat() {
 
-	std::cout << "Destructor called." << std::endl;
+	std::cout << GREY << "Destructor called." << RESET << std::endl;
 	return;
 }
 
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
 
-	std::cout << "Assignment operator called." << std::endl;
+	std::cout << GREY << "Assignment operator called." << RESET << std::endl;
 	this->_grade = rhs._grade;
 	return *this;
 }
@@ -46,7 +46,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
 
-	std::cout << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << std::endl;
+	std::cout << "[BUREAUCRAT] " << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
 	return os;
 }
 
@@ -65,7 +65,7 @@ int	Bureaucrat::getGrade() const {
 
 void	Bureaucrat::incrementGrade() {
 
-	if (this->_grade - 1 < 1)
+	if (this->_grade == 1)
 		throw(GradeTooHighException());
 	_grade -= 1;
 	return;
@@ -74,7 +74,7 @@ void	Bureaucrat::incrementGrade() {
 
 void	Bureaucrat::decrementGrade() {
 
-	if (this->_grade + 1 > 150)
+	if (this->_grade == 150)
 		throw(GradeTooLowException());
 	_grade += 1;
 	return;
@@ -100,9 +100,24 @@ void Bureaucrat::signForm(Form& form) {
 		form.beSigned(*this);
 	}
 	catch (std::exception& e) {
-		std::cout << *this << " couldn't sign " << form.getName();
+		std::cout << this->_name << " couldn't sign " << form.getName();
 		std::cout << " because " << e.what() << std::endl;
 		return;
 	}
-	std::cout << *this << " signed " << form.getName() << std::endl;
+	std::cout << this->_name << " signed " << form.getName() << std::endl;
+	return;
+}
+
+
+void Bureaucrat::executeForm(Form const & form) {
+
+	try {
+		form.execute(*this);
+	}
+	catch (std::exception& e) {
+		std::cout << this->_name << " couldn't execute " << form.getName() << " form because, " << e.what() << std::endl;
+		return;
+	}
+	std::cout << this->_name << " executed " << form.getName() << std::endl;
+	return;
 }

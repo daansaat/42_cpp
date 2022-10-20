@@ -5,7 +5,7 @@
 RobotomyRequestForm::RobotomyRequestForm()
 : Form("", 72, 45) {
 
-	std::cout << GREY << "[RQForm] Default constructor called." << RESET << std::endl;
+	std::cout << GREY << "[RRForm] Default constructor called." << RESET << std::endl;
 	return;
 }
 
@@ -13,14 +13,14 @@ RobotomyRequestForm::RobotomyRequestForm()
 RobotomyRequestForm::RobotomyRequestForm(std::string name)
 : Form(name, 72, 45) {
 
-	std::cout << GREY << "[RQForm] String constructor called." << RESET << std::endl;
+	std::cout << GREY << "[RRForm] String constructor called." << RESET << std::endl;
 	return;
 }
 
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) {
 
-	std::cout << GREY << "[RQForm] Copy constructor called." << RESET << std::endl;
+	std::cout << GREY << "[RRForm] Copy constructor called." << RESET << std::endl;
 	*this = src;
 	return;
 }
@@ -29,14 +29,14 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) {
 
 RobotomyRequestForm::~RobotomyRequestForm() {
 
-	std::cout << GREY << "[RQForm] Destructor called." << RESET << std::endl;
+	std::cout << GREY << "[RRForm] Destructor called." << RESET << std::endl;
 	return;
 }
 
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs) {
 
-	std::cout << GREY << "[RQForm] assignment operator called." << RESET << std::endl;
+	std::cout << GREY << "[RRForm] assignment operator called." << RESET << std::endl;
 	this->setSigned(rhs.getSigned());
 	return *this;
 }
