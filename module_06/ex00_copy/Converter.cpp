@@ -72,16 +72,10 @@ bool Converter::detectInt(std::string input) {
 			return false;
 		}
 	}
-	catch(std::invalid_argument& e) {
-		std::cout << "char: impossible: invalid argument" << std::endl;
-		std::cout << "int: impossible: invalid argument" << std::endl;
-		exception_c = true;
-		exception_i = true;
-		return false;
-	}
-	catch(std::out_of_range& e) {
-		std::cout << "char: impossible: out_of_range" << std::endl;
-		std::cout << "int: impossible: out_of_range" << std::endl;
+	catch(std::exception& e) {
+		std::string what = e.what();
+		std::cout << "char: impossible: " << what.substr(6, std::string::npos) << std::endl;
+		std::cout << "int: impossible: " << what.substr(6, std::string::npos) << std::endl;
 		exception_c = true;
 		exception_i = true;
 		return false;
@@ -103,13 +97,9 @@ bool Converter::detectFloat(std::string input) {
 		if (pos + 1 != input.length() || input[pos] != 'f')
 			return false;
 	}
-	catch(std::invalid_argument& e) {
-		std::cout << "float: impossible: invalid argument" << std::endl;
-		exception_f = true;
-		return false;
-	}
-	catch(std::out_of_range& e) {
-		std::cout << "float: impossible: out_of_range" << std::endl;
+	catch(std::exception& e) {
+		std::string what = e.what();
+		std::cout << "float: impossible: " << what.substr(6, std::string::npos) << std::endl;
 		exception_f = true;
 		return false;
 	}
@@ -132,13 +122,9 @@ bool Converter::detectDouble(std::string input) {
 		if (pos != input.length())
 			return false;
 	}
-	catch(std::invalid_argument& e) {
-		std::cout << "double: impossible: invalid argument" << std::endl;
-		exception_d = true;
-		return false;
-	}
-	catch(std::out_of_range& e) {
-		std::cout << "double: impossible: out_of_range" << std::endl;
+	catch(std::exception& e) {
+		std::string what = e.what();
+		std::cout << "double: impossible: " << what.substr(6, std::string::npos) << std::endl;
 		exception_d = true;
 		return false;
 	}
