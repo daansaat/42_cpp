@@ -16,7 +16,7 @@ public:
 	~Array();
 
 	Array& operator=(const Array& rhs);
-	T& operator[](int i);
+	T& operator[](unsigned int i);
 
 	int size(void) const;
 
@@ -27,33 +27,31 @@ public:
 
 private:
 
-	T*	_array;
-	int	_size;
+	T*				_array;
+	unsigned int	_size;
 };
 
 
 template<typename T>
-Array<T>::Array() : _array(NULL), _size(0) {
+Array<T>::Array() : _array(nullptr), _size(0) {
 
-	std::cout << GREY << "Default constructor called." << RESET << std::endl;
+	// std::cout << GREY << "Default constructor called." << RESET << std::endl;
 }
 
 
 template<typename T>
-Array<T>::Array(unsigned int n) : _size(n) {
+Array<T>::Array(unsigned int n) : _array(nullptr), _size(n) {
 
-	std::cout << GREY << "Unsigned int constructor called." << RESET << std::endl;
+	// std::cout << GREY << "Unsigned int constructor called." << RESET << std::endl;
 	_array = new T[n];
-	for (unsigned int i = 0; i < n; i++) {
-		_array[i] = 0;
-	}
 }
 
 
 template<typename T>
-Array<T>::Array(const Array& src) {
+Array<T>::Array(const Array& src) : _array(nullptr), _size(0) {
 
-	std::cout << GREY << "Copy constructor called." << RESET << std::endl;
+	// std::cout << GREY << "Copy constructor called." << RESET << std::endl;
+	_size = 0;
 	*this = src;
 }
 
@@ -61,8 +59,8 @@ Array<T>::Array(const Array& src) {
 template<typename T>
 Array<T>::~Array() {
 
-	std::cout << GREY << "Destructor called." << RESET << std::endl;
-	if (_array)
+	// std::cout << GREY << "Destructor called." << RESET << std::endl;
+	if (_size > 0)
 		delete[] _array;
 }
 
@@ -70,12 +68,12 @@ Array<T>::~Array() {
 template<typename T>
 Array<T>& Array<T>::operator=(const Array& rhs) {
 
-	std::cout << GREY << "Assignment operator called." << RESET << std::endl;
-	_size = rhs._size;
-	if (*_array)
+	// std::cout << GREY << "Assignment operator called." << RESET << std::endl;
+	if (_size > 0)
 		delete[] _array;
+	_size = rhs._size;
 	_array = new T[_size];
-	for (int i = 0; i < _size; i++) {
+	for (unsigned int i = 0; i < _size; i++) {
 		_array[i] = rhs._array[i];
 	}
 	return *this;
@@ -83,9 +81,9 @@ Array<T>& Array<T>::operator=(const Array& rhs) {
 
 
 template<typename T>
-T& Array<T>::operator[](int i) {
+T& Array<T>::operator[](unsigned int i) {
 
-	std::cout << GREY << "Subscripting operator called." << RESET << std::endl;
+	// std::cout << GREY << "Subscripting operator called." << RESET << std::endl;
 	if (i < 0 || i >= _size)
 		throw(OutOfBounds());
 	return _array[i];
@@ -95,7 +93,7 @@ T& Array<T>::operator[](int i) {
 template<typename T>
 const char* Array<T>::OutOfBounds::what() const throw() {
 
-	return RED"Out of bounds"RESET;
+	return RED"Index out of bounds"RESET;
 }
 
 
