@@ -12,8 +12,8 @@ Span::Span() {
 
 Span::Span(unsigned int N) : _size(N) {
 
-	_ints.reserve(N);
 	// std::cout << "Unsigned int constructor called." << std::endl;
+	_ints.reserve(N);
 }
 
 
