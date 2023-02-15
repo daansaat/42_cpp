@@ -5,9 +5,6 @@
 # include <vector>
 # include <algorithm>
 # include <stdexcept>
-# include <utility>
-# include <ctime>
-# include <cstdlib>
 
 class	Span {
 
@@ -21,7 +18,7 @@ public:
 	Span& operator=(const Span& rhs);
 
 	void addNumber(int number);
-	void addManyNumbers();
+	void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	int shortestSpan();
 	int longestSpan();
 
@@ -37,8 +34,8 @@ public:
 
 private:
 
-	std::vector<int>	_ints;
-	size_t				_size;
+	unsigned int		_N;
+	std::vector<int>	_nums;
 
 };
 

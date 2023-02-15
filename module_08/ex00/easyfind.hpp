@@ -5,15 +5,14 @@
 # include <iterator>
 
 template<typename T>
-void easyfind(T container, int value) {
+typename T::iterator easyfind(T& container, int n) {
 
 	typename T::iterator it;
 
-	it = std::find(container.begin(), container.end(), value);
-	if (it != container.end())
-		std::cout << "Element found in container: " << *it << std::endl;
-	else
-		std::cout << "Element not found in container." << std::endl;
+	it = std::find(container.begin(), container.end(), n);
+	if (it == container.end())
+		std::cerr << n << " Not found" << std::endl;
+	return it;
 }
 
 #endif

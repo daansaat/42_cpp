@@ -2,15 +2,15 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-: Form("", 145, 137) {
+: AForm(NULL, NULL, 145, 137) {
 
 	std::cout << GREY << "[SCForm] Default constructor called." << RESET << std::endl;
 	return;
 }
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
-: Form(name, 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+: AForm("ShrubberyCreationForm", target, 145, 137) {
 
 	std::cout << GREY << "[SCForm] String constructor called." << RESET << std::endl;
 	return;
@@ -43,14 +43,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 
-	if (!this->getSigned())
+	if (this->getSigned() == false)
 		throw(FormNotSigned());
 	else if (executor.getGrade() > this->getGradeToExecute())
 		throw(GradeTooLowException());
 
-	std::ofstream outfile(this->getName() + "_shrubbery");
+	std::ofstream outfile(this->getTarget() + "_shrubbery");
 	if (!outfile.is_open()) {
-		std::cout << "Couldn't open" << this->getName() + "_shrubbery" << std::endl;
+		std::cout << "Couldn't open" << this->getTarget() + "_shrubbery" << std::endl;
 		return;
 	}
 	outfile <<

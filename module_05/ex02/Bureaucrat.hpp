@@ -2,12 +2,12 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <stdexcept>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 # define GREY "\033[0;30m"
 # define RESET "\033[0m"
 
-class Form;
+class AForm;
 
 class	Bureaucrat {
 
@@ -20,22 +20,22 @@ public:
 
 	Bureaucrat& operator=(const Bureaucrat& rhs);
 
-	void signForm(Form& form);
-	void executeForm(Form const & form);
+	void signForm(AForm& form);
+	void executeForm(AForm const & form);
 	
-	const std::string	getName() const;
-	int					getGrade() const;
-	void				incrementGrade();
-	void				decrementGrade();
+	std::string	getName() const;
+	int			getGrade() const;
+	void		incrementGrade();
+	void		decrementGrade();
 
 	class	GradeTooHighException : public std::exception {
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 	class	GradeTooLowException : public std::exception {
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 private:

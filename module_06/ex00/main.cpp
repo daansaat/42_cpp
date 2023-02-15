@@ -8,17 +8,8 @@ int	main(int argc, char **argv) {
 		return 0;
 	}
 	
-	Converter x(argv[1]);
+	Converter Converter;
 
-	char 	c;
-	int		i;
-	float	f;
-	double	d;
-
-	c = static_cast<char>(x);
-	i = static_cast<int>(x);
-	f = static_cast<float>(x);
-	d = static_cast<double>(x);
-
+	Converter.convert(argv[1]);
 	return 0;
 }

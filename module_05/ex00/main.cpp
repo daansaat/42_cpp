@@ -17,8 +17,16 @@ int	main(void) {
 	catch(std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
+	try {
+		std::cout << "Initializing bureaucrat with grade 151." << std::endl;
+		Bureaucrat Chad("Chad", 151);
+		std::cout << Chad;
+	}
+	catch(std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	NEWLINE
-	Bureaucrat Patricia("Patricia", 33);
+	Bureaucrat Patricia("Patricia", 10);
 	while (true) {
 		
 		try {

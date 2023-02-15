@@ -6,6 +6,9 @@ HEAD = Fixed.hpp
 
 all: $(NAME)
 
+run: all
+	./$(NAME)
+
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $^ -o $@
 

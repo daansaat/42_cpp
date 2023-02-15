@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src)
 
 Bureaucrat::~Bureaucrat() {
 
-	std::cout << GREY << "Destructor called." << RESET << std::endl;
+	std::cout << GREY << "[Bureaucrat] Destructor called." << RESET << std::endl;
 	return;
 }
 
@@ -51,7 +51,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
 }
 
 
-const std::string	Bureaucrat::getName() const {
+std::string	Bureaucrat::getName() const {
 
 	return this->_name;
 }
@@ -93,7 +93,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(AForm& form) {
 
 	try {
 
@@ -109,7 +109,7 @@ void Bureaucrat::signForm(Form& form) {
 }
 
 
-void Bureaucrat::executeForm(Form const & form) {
+void Bureaucrat::executeForm(AForm const & form) {
 
 	try {
 		form.execute(*this);

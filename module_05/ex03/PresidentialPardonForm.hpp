@@ -1,12 +1,12 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class PresidentialPardonForm : public Form {
+class PresidentialPardonForm : public AForm {
 
 public:
 
-	PresidentialPardonForm(std::string name);
+	PresidentialPardonForm(std::string target);
 	PresidentialPardonForm(const PresidentialPardonForm& src);
 	~PresidentialPardonForm();
 

@@ -1,12 +1,12 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class RobotomyRequestForm : public Form {
+class RobotomyRequestForm : public AForm {
 
 public:
 
-	RobotomyRequestForm(std::string name);
+	RobotomyRequestForm(std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm& src);
 	~RobotomyRequestForm();
 

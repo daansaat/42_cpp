@@ -1,10 +1,13 @@
 NAME = bureaucrat
-FLAG = -Wall -Werror -Wextra -I -std=c++98
+FLAG = -Wall -Werror -Wextra -std=c++98
 SRCS = main.cpp Bureaucrat.cpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
 HEAD = Bureaucrat.hpp
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAG) $^ -o $@

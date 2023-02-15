@@ -1,4 +1,5 @@
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 #include "Dog.hpp"
 
 int	main(void){
@@ -24,14 +25,14 @@ int	main(void){
 
 	std::cout << std::endl;
 
-	const WrongAnimal* wrongi = new WrongCat();
+	const WrongAnimal* k = new WrongCat();
 	
 	std::cout << std::endl;
-	std::cout << "wrongi is of type " << wrongi->getType() << " and makes the sound ";
-	wrongi->makeSound();
+	std::cout << "k is of type " << k->getType() << " and makes the sound ";
+	k->makeSound();
 	std::cout << std::endl;
 
-	delete wrongi;
-	
+	delete k;
+	system("leaks animal");
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 13:54:57 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/10/14 13:49:23 by daansaat      ########   odam.nl         */
+/*   Updated: 2023/02/02 13:44:29 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,33 +97,29 @@ bool	Fixed::operator!=(Fixed const &rhs) const {
 
 Fixed	Fixed::operator+(Fixed const &rhs) const {
 	
-	Fixed result(this->toFloat() + rhs.toFloat());
-	return result;
+	return Fixed(this->toFloat() + rhs.toFloat());
 }
 
 
 Fixed	Fixed::operator-(Fixed const &rhs) const {
 	
-	Fixed result(this->toFloat() - rhs.toFloat());
-	return result;
+	return Fixed(this->toFloat() - rhs.toFloat());
 }
 
 
 Fixed	Fixed::operator*(Fixed const &rhs) const {
 	
-	Fixed result(this->toFloat() * rhs.toFloat());
-	return result;
+	return Fixed(this->toFloat() * rhs.toFloat());
 }
 
 
 Fixed	Fixed::operator/(Fixed const &rhs) const {
 	
-	Fixed result(this->toFloat() / rhs.toFloat());
-	return result;
+	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
 
-Fixed	Fixed::operator++(void) {
+Fixed&	Fixed::operator++(void) {
 	
 	this->_fixedNumber++;
 	return *this;
@@ -138,7 +134,7 @@ Fixed	Fixed::operator++(int) {
 }
 
 
-Fixed	Fixed::operator--(void) {
+Fixed&	Fixed::operator--(void) {
 	
 	this->_fixedNumber--;
 	return *this;

@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 13:54:59 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/10/14 13:48:18 by daansaat      ########   odam.nl         */
+/*   Updated: 2023/02/02 13:44:16 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ public:
 	Fixed	operator*(Fixed const &rhs) const;
 	Fixed	operator/(Fixed const &rhs) const;
 	
-	Fixed	operator++(void);
+	Fixed&	operator++(void);
 	Fixed	operator++(int);
-	Fixed	operator--(void);
+	Fixed&	operator--(void);
 	Fixed	operator--(int);
 	
 	static Fixed& min(Fixed& number1, Fixed& number2); 

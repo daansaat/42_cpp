@@ -36,14 +36,23 @@ std::cout << std::endl;
 }
 	std::cout << std::endl;
 {
-	Span sp(100);
+	Span sp(10000);
 
-	sp.addManyNumbers();
+	std::vector<int> vector;
+	for (int i = 0; i <= 10000; i++) {
+		vector.push_back(i);
+	}
+
+	try {
+		sp.addRange(vector.begin(), vector.end());
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
 	std::cout << "longest span: " << sp.longestSpan() << std::endl;
 }
 	std::cout << std::endl;
-	// system("leaks span");
 	return 0;
 }

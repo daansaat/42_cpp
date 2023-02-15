@@ -1,5 +1,4 @@
 #include "Base.hpp"
-#include <iostream>
 #include <ctime>
 #include "A.hpp"
 #include "B.hpp"
@@ -13,15 +12,17 @@ Base::~Base() {
 }
 
 
-Base * generate(void) {
+Base* generate(void) {
 
 	std::srand(time(NULL));
 	int random = rand() % 3;
 	switch(random) {
-
-		case 0 : return (new A);
-		case 1 : return (new B);
-		case 2 : return (new C);
+		case 0 : std::cout << "Generated A class" << std::endl;
+			return (new A);
+		case 1 : std::cout << "Generated B class" << std::endl;
+			return (new B);
+		case 2 : std::cout << "Generated C class" << std::endl;
+			return (new C);
 		default : return NULL;
 	}
 }
@@ -29,38 +30,41 @@ Base * generate(void) {
 
 void identify(Base* p) {
 
-	A *ap = dynamic_cast<A *>(p);
-	if (ap)
+	if (dynamic_cast<A *>(p)) {
 		std::cout << "A" << std::endl;
-	B *bp = dynamic_cast<B *>(p);
-	if (bp)
+		return;
+	}
+	if (dynamic_cast<B *>(p)) {
 		std::cout << "B" << std::endl;
-	C *cp = dynamic_cast<C *>(p);
-	if (cp)
+		return;
+	}
+	if (dynamic_cast<C *>(p)) {
 		std::cout << "C" << std::endl;
+		return;
+	}
 }
 
 
 void identify(Base& p) {
 
 	try {
-		A &a = dynamic_cast<A &>(p);
-		static_cast<void>(a);
+		(void)dynamic_cast<A &>(p);
 		std::cout << "A" << std::endl;
+		return;
 	}
 	catch (std::bad_cast) {
 	}
 	try {
-		B &b = dynamic_cast<B &>(p);
-		static_cast<void>(b);
+		(void)dynamic_cast<B &>(p);
 		std::cout << "B" << std::endl;
+		return;
 	}
 	catch (std::bad_cast) {
 	}
 	try {
-		C &c = dynamic_cast<C &>(p);
-		static_cast<void>(c);
+		(void)dynamic_cast<C &>(p);
 		std::cout << "C" << std::endl;
+		return;
 	}
 	catch (std::bad_cast) {
 	}

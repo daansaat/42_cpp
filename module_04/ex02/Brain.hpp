@@ -18,6 +18,11 @@ public:
 
 	Brain& operator=(const Brain& rhs);
 
+	void				setIdea(size_t i, std::string idea);
+	const std::string	getIdea(size_t i) const;
+
+private:
+
 	std::string ideas[100];
 };
 

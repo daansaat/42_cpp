@@ -11,9 +11,9 @@ void ft_print(T const& element) {
 
 
 template<typename T>
-void iter(T const* array, int len, void(*func)(T const&)) {
+void iter(T const* array, int length, void(*func)(T const&)) {
 
-	for (int i = 0; i < len && array[i]; i++) {
+	for (int i = 0; i < length; i++) {
 
 		func(array[i]);
 	}

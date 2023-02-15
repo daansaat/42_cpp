@@ -10,10 +10,9 @@ Span::Span() {
 }
 
 
-Span::Span(unsigned int N) : _size(N) {
+Span::Span(unsigned int N) : _N(N) {
 
 	// std::cout << "Unsigned int constructor called." << std::endl;
-	_ints.reserve(N);
 }
 
 
@@ -33,8 +32,8 @@ Span::~Span() {
 Span& Span::operator=(const Span& rhs) {
 
 	// std::cout << "Copy assignment operator called." << std::endl;
-	this->_size = rhs._size;
-	this->_ints.assign(rhs._ints.begin(), rhs._ints.end());
+	this->_N = rhs._N;
+	this->_nums.assign(rhs._nums.begin(), rhs._nums.end());
 	return *this;
 }
 
@@ -44,51 +43,44 @@ Span& Span::operator=(const Span& rhs) {
 
 void Span::addNumber(int number) {
 
-	if (_ints.size() == _size)
+	if (_nums.size() == _N)
 		throw NoSpaceException();
-	_ints.push_back(number);
+	_nums.push_back(number);
 }
 
 
 int Span::shortestSpan() {
 
-	if (_ints.size() < 2)
+	if (_nums.size() < 2)
 		throw NoSpanException();
 	Span temp(*this);
-	std::sort(temp._ints.begin(), temp._ints.end());
-	int	min_diff = INT_MAX;
-	for (size_t i = 0; i < _size - 1; ++i) {
-		if (temp._ints[i + 1] - temp._ints[i] < min_diff)
-			min_diff = temp._ints[i + 1] - temp._ints[i];
+	std::sort(temp._nums.begin(), temp._nums.end());
+	int	shortest = temp._nums.back() - temp._nums.front();
+	for (size_t i = 0; i < temp._nums.size() - 1; i++) {
+		int span = temp._nums[i + 1] - temp._nums[i];
+		if (span < shortest)
+			shortest = span;
 	}
-	return min_diff;
+	return shortest;
 }
 
 
 int Span::longestSpan() {
 
-	if (_ints.size() < 2)
+	if (_nums.size() < 2)
 		throw NoSpanException();
-	std::pair<std::vector<int>::iterator, std::vector<int>::iterator> result;
-	result = minmax_element(_ints.begin(), _ints.end());
-	return *result.second - *result.first;
+	return *std::max_element(_nums.begin(), _nums.end()) - *std::min_element(_nums.begin(), _nums.end());
 }
 
 
-static int RandomNumber () {return std::rand() % 1000;}
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
 
-void Span::addManyNumbers() {
-
-	std::srand(unsigned(std::time(nullptr)));
-	// std::generate_n(_ints.begin(), _size, RandomNumber);
-	for (size_t i = 0; i < _size; i++) {
-		_ints.push_back(RandomNumber());
-		// std::cout << i << ": " << _ints[i] << std::endl;
+	while (begin != end) {
+		if (_nums.size() == _N)
+			throw NoSpaceException();
+		_nums.push_back(*begin);
+		begin++;
 	}
-	std::cout << "_size = " << _ints.size() << std::endl;
-	// std::cout << *(_ints.begin() + 1) << std::endl;
-	// std::cout << *_ints.end() << std::endl;
-	// std::cout << _ints.size() << std::endl;
 }
 
 

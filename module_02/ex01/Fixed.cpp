@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 13:54:57 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/10/13 14:01:41 by dsaat         ########   odam.nl         */
+/*   Updated: 2023/02/02 12:53:30 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value)
 : _fixedNumber(roundf(value * (1 << _fractionalBitsNumber))) {
+	
 	std::cout << "Float constructor called" << std::endl;
 }
 

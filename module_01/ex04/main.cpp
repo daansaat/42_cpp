@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 12:23:15 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/10/13 12:23:16 by dsaat         ########   odam.nl         */
+/*   Updated: 2023/02/01 17:09:15 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int	main(int argc, char **argv) {
 		std::string newline;
 		getline(infile, newline);
 		ft_strReplace(newline, s1, s2);
-		outfile << newline << std::endl;
+		outfile << newline;
+		if (!infile.eof()) 
+			outfile << std::endl;
 	}
 	
 	infile.close();

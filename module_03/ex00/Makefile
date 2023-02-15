@@ -1,10 +1,13 @@
 NAME = claptrap
-FLAG = -Wall -Werror -Wextra -I -std=c++98
+FLAG = -Wall -Werror -Wextra -std=c++98
 SRCS = main.cpp ClapTrap.cpp
 HEAD = ClapTrap.hpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $^ -o $@

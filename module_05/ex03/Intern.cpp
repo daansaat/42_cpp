@@ -30,7 +30,7 @@ Intern& Intern::operator=(Intern const & rhs) {
 }
 
 
-Form* Intern::makeForm(std::string name, std::string target) {
+AForm* Intern::makeForm(std::string name, std::string target) {
 
 	std::string form[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
@@ -38,7 +38,8 @@ Form* Intern::makeForm(std::string name, std::string target) {
 	for (i = 0; i < 3; i++) {
 
 		if (form[i] == name) {
-			std::cout << "Intern creates " << name << std::endl;
+			
+			std::cout << "Intern creates " << name << " form" << std::endl;
 			break;
 		}
 	}

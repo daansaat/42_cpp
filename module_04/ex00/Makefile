@@ -1,10 +1,13 @@
 NAME = animal
-FLAG = -Wall -Werror -Wextra -I -Wshadow -Wno-shadow -std=c++98
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
+FLAG = -Wall -Werror -Wextra -std=c++98
+SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:%.cpp=obj/%.o)
-HEAD = Animal.hpp Cat.hpp Dog.hpp
+HEAD = $(wildcard *.hpp)
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $^ -o $@

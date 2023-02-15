@@ -13,26 +13,12 @@ public:
 	Cat& operator=(const Cat& rhs);
 
 	void	makeSound() const;
-	void	setIdeas(std::string str);
+	void	setIdeas(size_t i, std::string str);
 	void	getIdeas();
 
 private:
 
 	Brain*	brain;
-};
-
-
-class	WrongCat : public WrongAnimal {
-
-public:
-
-	WrongCat();
-	WrongCat(const WrongCat& src);
-	~WrongCat();
-
-	WrongCat& operator=(const WrongCat& rhs);
-
-	void	makeSound() const;
 };
 
 #endif

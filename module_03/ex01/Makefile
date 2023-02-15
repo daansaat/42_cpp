@@ -1,10 +1,13 @@
 NAME = scavtrap
-FLAG = -Wall -Werror -Wextra -I -std=c++98
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
-HEAD = ClapTrap.hpp ScavTrap.hpp
+FLAG = -Wall -Werror -Wextra -std=c++98
+SRCS = $(wildcard *.cpp)
+HEAD = $(wildcard *.hpp)
 OBJS = $(SRCS:%.cpp=obj/%.o)
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $^ -o $@

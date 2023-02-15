@@ -41,7 +41,6 @@ private:
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
 
-
 };
 
 #endif

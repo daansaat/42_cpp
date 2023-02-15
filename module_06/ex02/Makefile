@@ -1,10 +1,13 @@
 NAME = identify
-FLAG = -Wall -Werror -Wextra -I -std=c++98
+FLAG = -Wall -Werror -Wextra -std=c++98
 SRCS = main.cpp Base.cpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
 HEAD = Base.hpp A.hpp B.hpp C.hpp
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAG) $^ -o $@

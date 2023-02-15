@@ -13,7 +13,8 @@ int	main(void) {
 	bot3 = bot1;
 
 	bot1.beRepaired(5);
-	bot2.attack("bot1");
+	for (int x = 11; x > 0; x--)
+		bot2.attack("bot1");
 	bot1.takeDamage(0);
 	bot1.attack("bot2");
 	bot2.takeDamage(20);

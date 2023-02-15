@@ -51,7 +51,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
 }
 
 
-const std::string	Bureaucrat::getName() const {
+std::string	Bureaucrat::getName() const {
 
 	return this->_name;
 }
@@ -67,7 +67,7 @@ void	Bureaucrat::incrementGrade() {
 
 	if (this->_grade == 1)
 		throw(GradeTooHighException());
-	_grade -= 1;
+	_grade--;
 	return;
 }
 
@@ -76,7 +76,7 @@ void	Bureaucrat::decrementGrade() {
 
 	if (this->_grade == 150)
 		throw(GradeTooLowException());
-	_grade += 1;
+	_grade++;
 	return;
 }
 
@@ -96,7 +96,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 void Bureaucrat::signForm(Form& form) {
 
 	try {
-
 		form.beSigned(*this);
 	}
 	catch (std::exception& e) {

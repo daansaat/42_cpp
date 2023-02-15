@@ -63,7 +63,7 @@ std::ostream& operator<<(std::ostream& os, const Form& rhs) {
 }
 
 
-const std::string	Form::getName() const {
+std::string	Form::getName() const {
 
 	return this->_name;
 }

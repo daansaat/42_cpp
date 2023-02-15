@@ -7,10 +7,10 @@ int	main(void) {
 
 	NEWLINE
 	Intern	intern;
-	Form*	scf;
-	Form*	rrf;
-	Form*	ppf;
-	Form*	err;
+	AForm*	scf;
+	AForm*	rrf;
+	AForm*	ppf;
+	AForm*	err;
 	NEWLINE
 	scf = intern.makeForm("shrubbery creation", "shrub");
 	std::cout << *scf << std::endl;

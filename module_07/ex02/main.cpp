@@ -23,9 +23,12 @@ int	main(void) {
 	std::cout << std::endl;
 
 	b[2] = 42;
-	Array<int> 	b_copy(b);
 	std::cout << GREY << "b[2] = 42;" << std::endl;
+	Array<int> 	b_copy(b);
 	std::cout << "b_copy(b);" << RESET << std::endl;
+	b[2] = 8;
+	std::cout << GREY << "b[2] = 8;" << RESET << std::endl;
+	std::cout << "b[2] = " << b[2] << std::endl;
 	std::cout << "b_copy[2] = " << b_copy[2] << std::endl;
 	try {
 		std::cout << "b_copy[-3] = " << b_copy[-3] << std::endl;
@@ -60,5 +63,6 @@ int	main(void) {
 	std::cout << "f[0] = " << f[0] << std::endl;
 	std::cout << std::endl;
 	
+	// system("leaks array");
 	return 0;
 }

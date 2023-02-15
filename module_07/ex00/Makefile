@@ -1,10 +1,13 @@
 NAME = whatever
-FLAG = -Wall -Werror -Wextra -I -std=c++98
+FLAG = -Wall -Werror -Wextra -std=c++98
 SRCS = main.cpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
 HEAD = whatever.hpp
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 $(NAME): $(OBJS)
 	c++ $(FLAG) $^ -o $@

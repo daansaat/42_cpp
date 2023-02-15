@@ -15,18 +15,4 @@ public:
 	void	makeSound() const;
 };
 
-
-class	WrongCat : public WrongAnimal {
-
-public:
-
-	WrongCat();
-	WrongCat(const WrongCat& src);
-	~WrongCat();
-
-	WrongCat& operator=(const WrongCat& rhs);
-
-	void	makeSound() const;
-};
-
 #endif

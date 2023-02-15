@@ -19,19 +19,19 @@ public:
 
 	void beSigned(const Bureaucrat& bureaucrat);
 
-	const std::string	getName() const;
-	bool				getSigned() const;
-	int					getGradeToSign() const;
-	int					getGradeToExecute() const;
+	std::string	getName() const;
+	bool		getSigned() const;
+	int			getGradeToSign() const;
+	int			getGradeToExecute() const;
 
 	class	GradeTooHighException : public std::exception {
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 	class	GradeTooLowException : public std::exception {
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 private:

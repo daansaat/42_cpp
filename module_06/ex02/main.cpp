@@ -1,9 +1,13 @@
 #include "Base.hpp"
+// #include <iostream>
 
-int	main(void) {
+int main ( void ) {
+    Base *base = generate();
+	Base &ref = *base;
 
-	Base *p = generate();
-	identify(p);
-	identify(*p);
-	delete p;
+    std::cout << "Base* ptr is pointing to ";
+    identify(base);
+    std::cout << "Base& ref is pointing to ";
+    identify(ref);
+    delete base;
 }

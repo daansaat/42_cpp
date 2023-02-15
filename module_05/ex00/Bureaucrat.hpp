@@ -14,21 +14,21 @@ public:
 
 	Bureaucrat& operator=(const Bureaucrat& rhs);
 
-	const std::string	getName() const;
-	int					getGrade() const;
-	void				incrementGrade();
-	void				decrementGrade();
+	std::string	getName() const;
+	int			getGrade() const;
+	void		incrementGrade();
+	void		decrementGrade();
 
 	class	GradeTooHighException : public std::exception {
 
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 	class	GradeTooLowException : public std::exception {
 
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 private:

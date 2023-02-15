@@ -8,26 +8,29 @@ std::cout << std::endl;
 {
 	std::cout << GREY << "[TEST] MutantStack<int> " << RESET << std::endl;
 	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
+	mstack.push(5); std::cout << "push(5)" << std::endl;
+	mstack.push(17); std::cout << "push(17)" << std::endl;
+	std::cout << "top() = "<< mstack.top() << std::endl;
+	mstack.pop(); std::cout << "pop()" << std::endl;
+	std::cout << "size() = " <<  mstack.size() << std::endl;
+	mstack.push(3); std::cout << "push(3)" << std::endl;
+	mstack.push(5); std::cout << "push(5)" << std::endl;
+	mstack.push(737); std::cout << "push(737)" << std::endl;
 	//[...]
 	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
+	MutantStack<int> s(mstack);
+	MutantStack<int> p;
+	p = s;
+	MutantStack<int>::iterator it = p.begin();
+	MutantStack<int>::iterator ite = p.end();
 	++it;
 	--it;
 	while (it != ite)
 	{
-	std::cout << *it << std::endl;
+	std::cout << *it << " ";
 	++it;
 	}
-	std::stack<int> s(mstack);
+	std::cout << std::endl;
 }
 std::cout << std::endl;
 {

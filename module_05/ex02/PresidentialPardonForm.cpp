@@ -1,15 +1,15 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm()
-: Form("", 25, 5) {
+: AForm(NULL, NULL, 25, 5) {
 
 	std::cout << GREY << "[PPForm] Default constructor called." << RESET << std::endl;
 	return;
 }
 
 
-PresidentialPardonForm::PresidentialPardonForm(std::string name)
-: Form(name, 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+: AForm("PresidentialPardonForm", target, 25, 5) {
 
 	std::cout << GREY << "[PPForm] String constructor called." << RESET << std::endl;
 	return;
@@ -47,7 +47,7 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	else if (executor.getGrade() > this->getGradeToExecute())
 		throw(GradeTooLowException());
 
-	std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	return;
 }
 

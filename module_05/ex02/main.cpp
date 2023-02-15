@@ -10,16 +10,17 @@ int	main(void) {
 	NEWLINE
 	Bureaucrat Boss("Boss", 1);
 	std::cout << Boss << std::endl;
-	Bureaucrat Intern("Intern", 137);
+	Bureaucrat Intern("Intern", 138);
 	std::cout << Intern << std::endl;
 	NEWLINE
 	{
 		ShrubberyCreationForm form("shrub");
 		ShrubberyCreationForm form2("shrub2");
-		std::cout << form << std::endl;
+		std::cout << form << std::endl << form2 << std::endl;
 		try {
 			Boss.signForm(form);
 			form2 = form;
+			std::cout << form << std::endl << form2 << std::endl;
 			Boss.executeForm(form);
 			Boss.executeForm(form2);
 			Intern.executeForm(form);

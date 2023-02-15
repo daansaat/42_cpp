@@ -3,24 +3,24 @@
 #include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm()
-: Form("", 72, 45) {
+: AForm(NULL, NULL, 72, 45) {
 
-	std::cout << GREY << "[RRForm] Default constructor called." << RESET << std::endl;
+	std::cout << GREY << "[RQForm] Default constructor called." << RESET << std::endl;
 	return;
 }
 
 
-RobotomyRequestForm::RobotomyRequestForm(std::string name)
-: Form(name, 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+: AForm("RobotomyRequestForm", target, 72, 45) {
 
-	std::cout << GREY << "[RRForm] String constructor called." << RESET << std::endl;
+	std::cout << GREY << "[RQForm] String constructor called." << RESET << std::endl;
 	return;
 }
 
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) {
 
-	std::cout << GREY << "[RRForm] Copy constructor called." << RESET << std::endl;
+	std::cout << GREY << "[RQForm] Copy constructor called." << RESET << std::endl;
 	*this = src;
 	return;
 }
@@ -29,14 +29,14 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) {
 
 RobotomyRequestForm::~RobotomyRequestForm() {
 
-	std::cout << GREY << "[RRForm] Destructor called." << RESET << std::endl;
+	std::cout << GREY << "[RQForm] Destructor called." << RESET << std::endl;
 	return;
 }
 
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs) {
 
-	std::cout << GREY << "[RRForm] assignment operator called." << RESET << std::endl;
+	std::cout << GREY << "[RQForm] assignment operator called." << RESET << std::endl;
 	this->setSigned(rhs.getSigned());
 	return *this;
 }
@@ -44,7 +44,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 
-	if (!this->getSigned())
+	if (this->getSigned() == false)
 		throw(FormNotSigned());
 	else if (executor.getGrade() > this->getGradeToExecute())
 		throw(GradeTooLowException());
@@ -53,10 +53,9 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	std::srand(time(NULL));
 	int random = rand() % 2;
 	if (random == 0) {
-		std::cout << this->getName() << " has been robotomized successfully!" << std::endl;
-		return;
+		std::cout << this->getTarget() << " has been robotomized successfully!" << std::endl;
 	}
-	std::cout << "Robotomy failed..." << std::endl;
-	return;
+	else
+		std::cout << "Robotomy failed..." << std::endl;
 }
 

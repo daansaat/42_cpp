@@ -1,26 +1,60 @@
 #include "easyfind.hpp"
+#include <list>
 #include <vector>
 #include <array>
 
-int	main(void) {
-
+int main( void ) {
 {
-	std::vector<int> ints;
+	std::cout << std::endl;
+	std::cout << "............list iterator............" << std::endl;
+	std::list<int> list;
 
-	ints.push_back(10);
-	ints.push_back(20);
-	ints.push_back(30);
-	ints.push_back(40);
-	ints.push_back(50);
+	for (int i = 0; i <= 5; i++) {
+		list.push_back(i);
+	}
 
-	easyfind(ints, 30);
-	easyfind(ints, 60);
+	std::list<int>::iterator it;
+	std::cout << "List: {";
+	for (it = list.begin(); it != list.end();)
+		std::cout << " " << *it++;
+	std::cout << " }" << std::endl;
+
+    easyfind(list, 42);
+    it = easyfind(list, 3);
+	*it = 42;
+	it = list.begin();
+
+	std::cout << "List: {";
+	for (it = list.begin(); it != list.end();)
+		std::cout << " " << *it++;
+	std::cout << " }" << std::endl;
 }
 {
-	std::array<int, 3> ints = {10, 20, 30};
+	std::cout << std::endl;
+	std::cout << "............vector iterator............" << std::endl;
+	std::vector<int> vector;
 
-	easyfind(ints, 10);
-	easyfind(ints, 97);
+	for (int i = 0; i <= 5; i++) {
+		vector.push_back(i * i);
+	}
+
+	std::vector<int>::iterator it;
+	std::cout << "Vector: {";
+	for (it = vector.begin(); it != vector.end();)
+		std::cout << " " << *it++;
+	std::cout << " }" << std::endl;
+
+	for (int i = 0; i <= 7; ++i) {
+        it = easyfind(vector, i);
+    }
+
+	it--;
+	*it = 100;
+
+	std::cout << "Vector: {";
+	for (it = vector.begin(); it != vector.end();)
+		std::cout << " " << *it++;
+	std::cout << " }" << std::endl;
+    std::cout << std::endl;
 }
-	return 0;
 }

@@ -29,6 +29,7 @@ Dog::~Dog() {
 Dog& Dog::operator=(const Dog& rhs) {
 
 	std::cout << "[Dog] assignment operator called." << std::endl;
+	*(this->brain) = *(rhs.brain);
 	this->type = rhs.type;
 	return *this;
 }
@@ -37,5 +38,23 @@ Dog& Dog::operator=(const Dog& rhs) {
 void Dog::makeSound() const {
 
 	std::cout << "woef" << std::endl;
+	return;
+}
+
+
+void Dog::setIdeas(size_t i, std::string idea) {
+
+	brain->setIdea(i, idea);
+	return;
+}
+
+
+void Dog::getIdeas() {
+	
+	for (int i = 0; i < 100; i++) {
+		if (!brain->getIdea(i).empty()) {
+			std::cout << CYAN << brain->getIdea(i) << "... " RESET;
+		}
+	}
 	return;
 }

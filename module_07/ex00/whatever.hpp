@@ -3,25 +3,25 @@
 
 
 template<typename T>
-void swap(T& value1, T& value2) {
+void swap(T& a, T& b) {
 
-	T temp = value1;
-	value1 = value2;
-	value2 = temp;
+	T temp = a;
+	a = b;
+	b = temp;
 }
 
 
 template<typename T>
-T const& min(T const& value1, T const& value2) {
+T const& min(T const& a, T const& b) {
 
-	return (value1 < value2 ? value1 : value2);
+	return (a < b ? a : b);
 }
 
 
 template<typename T>
-T const& max(T const& value1, T const& value2) {
+T const& max(T const& a, T const& b) {
 
-	return (value1 > value2 ? value1 : value2);
+	return (a > b ? a : b);
 }
 
 #endif

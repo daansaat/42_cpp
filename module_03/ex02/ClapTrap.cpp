@@ -3,7 +3,7 @@
 ClapTrap::ClapTrap()
 : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "[ClapTrap] default constructor called" << std::endl;
 	return;
 }
 
@@ -11,14 +11,14 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(std::string name)
 : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 
-	std::cout << "String constructor called" << std::endl;
+	std::cout << "[ClapTrap] string constructor called" << std::endl;
 	return;
 }
 
 
 ClapTrap::ClapTrap(const ClapTrap& src) {
 
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "[ClapTrap] copy constructor called" << std::endl;
 	*this = src;
 	return;
 }
@@ -26,14 +26,14 @@ ClapTrap::ClapTrap(const ClapTrap& src) {
 
 ClapTrap::~ClapTrap() {
 
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "[ClapTrap] destructor called" << std::endl;
 	return;
 }
 
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
 
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "[ClapTrap] assignment operator called" << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
 	this->_energyPoints = rhs._energyPoints;

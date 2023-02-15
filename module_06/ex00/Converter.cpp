@@ -1,24 +1,23 @@
 #include "Converter.hpp"
 
-Converter::Converter() {
+Converter::Converter()
+: _i(0)
+, _f(0.0)
+, _d(0.0)
+, exception_c(false)
+, exception_i(false)
+, exception_f(false)
+, exception_d(false) {
 
 	std::cout << GREY << "Default constructor called." << RESET << std::endl;
 	return;
 }
 
 
-Converter::Converter(std::string input)
-: _input(input) {
-
-	std::cout << GREY << "String constructor called." << RESET << std::endl;
-	return;
-}
-
-
-Converter::Converter(Converter const & src)
-: _input(src._input) {
+Converter::Converter(Converter const & src) {
 
 	std::cout << GREY << "Copy constructor called." << RESET << std::endl;
+	*this = src;
 	return;
 }
 
@@ -33,77 +32,152 @@ Converter::~Converter() {
 Converter& Converter::operator=(Converter const & rhs) {
 
 	std::cout << GREY << "Assignment operator called" << RESET << std::endl;
-	this->_input = rhs._input;
+	this->_i = rhs._i;
+	this->_f = rhs._f;
+	this->_d = rhs._d;
+	this->exception_c = rhs.exception_c;
+	this->exception_i = rhs.exception_i;
+	this->exception_f = rhs.exception_f;
+	this->exception_d = rhs.exception_d;
 	return *this;
 }
 
 
-Converter::operator char() const {
+void Converter::convert(std::string input) {
 
-	char c;
+	if (detectInt(input))
+		convertFromInt();
+	else if (detectFloat(input))
+		convertFromFloat();
+	else if (detectDouble(input))
+		convertFromDouble();
+	else {
+		if (!exception_c)
+			std::cout << "char: impossible: no conversion" << std::endl;
+		if (!exception_i)
+			std::cout << "int: impossible: no conversion" << std::endl;
+		if (!exception_f)
+			std::cout << "float: impossible: no conversion" << std::endl;
+		if (!exception_d)
+			std::cout << "double: impossible: no conversion" << std::endl;
+	}
+	return;
+}
+
+
+bool Converter::detectInt(std::string input) {
+
+	std::size_t pos;
 	try {
-		int i = std::stoi(_input);
-		c = static_cast<char>(i);
+		_i = stoi(input, &pos);
+		if (pos != input.length()) {
+			return false;
+		}
 	}
 	catch(std::exception& e) {
-		std:: string what = e.what();
+		std::string what = e.what();
 		std::cout << "char: impossible: " << what.substr(6, std::string::npos) << std::endl;
-		return 0; 
-	}
-	if (std::isprint(c))
-		std::cout << "char: '" << c << "'" << std::endl;
-	else
-		std::cout << "char: " << "Non displayable" << std::endl;
-	return c;
-}
-
-
-Converter::operator int() const {
-
-	int i;
-	try {
-		i = std::stoi(_input);
-	}
-	catch(std::exception& e) {
-		std:: string what = e.what();
 		std::cout << "int: impossible: " << what.substr(6, std::string::npos) << std::endl;
-		return 0;
+		exception_c = true;
+		exception_i = true;
+		return false;
 	}
-	std::cout << "int: " << i << std::endl;
-	return i;
+	if (!std::isprint(_i)) {
+		std::cout << "char: Non displayable" << std::endl;
+		exception_c = true;
+	}
+	std::cout << std::fixed << std::setprecision(1);
+	return true;
 }
 
 
-Converter::operator float() const {
+bool Converter::detectFloat(std::string input) {
 
-	float f;
+	std::size_t pos;
 	try {
-		f = std::stof(_input);
+		_f = stof(input, &pos);
+		if (pos + 1 != input.length() || input[pos] != 'f')
+			return false;
 	}
 	catch(std::exception& e) {
-		std:: string what = e.what();
+		std::string what = e.what();
 		std::cout << "float: impossible: " << what.substr(6, std::string::npos) << std::endl;
-		return 0;
+		exception_f = true;
+		return false;
 	}
-	float integral;
-	if (std::modf(f, &integral) == 0)
-		std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << f << "f" << std::endl;
-	return f;
+	if (!exception_c && !std::isprint(_f)) {
+		std::cout << "char: Non displayable" << std::endl;
+		exception_c = true;
+	}
+	float integral = _f;
+	if (std::modf(integral, &integral) == 0)
+			std::cout << std::fixed << std::setprecision(1);
+	return true;
 }
 
 
-Converter::operator double() const {
+bool Converter::detectDouble(std::string input) {
 
-	double d;
+	std::size_t pos;
 	try {
-		d = std::stod(_input);
+		_d = stod(input, &pos);
+		if (pos != input.length())
+			return false;
 	}
 	catch(std::exception& e) {
-		std:: string what = e.what();
+		std::string what = e.what();
 		std::cout << "double: impossible: " << what.substr(6, std::string::npos) << std::endl;
-		return 0;
+		exception_d = true;
+		return false;
 	}
-	std::cout << "double: " << d << std::endl;
-	return d;
+	if (!exception_c && !std::isprint(_d)) {
+		std::cout << "char: Non displayable" << std::endl;
+		exception_c = true;
+	}
+	float integral = static_cast<float>(_d);
+	if (std::modf(integral, &integral) == 0)
+			std::cout << std::fixed << std::setprecision(1);
+	return true;
+}
+
+
+void Converter::convertFromInt() {
+
+
+	if (!exception_c)
+		std::cout << "char: '" << static_cast<char>(_i) << "'" << std::endl;
+	std::cout << "int: " << _i << std::endl;
+	std::cout << "float: " << static_cast<float>(_i) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(_i) << std::endl;
+	std::cout << GREY << "converted from int" << RESET << std::endl;
+	return;
+}
+
+
+void Converter::convertFromFloat() {
+
+
+	if (!exception_c)
+		std::cout << "char: '" << static_cast<char>(_f) << "'" << std::endl;
+	if (!exception_i)
+		std::cout << "int: " << static_cast<int>(_f) << std::endl;
+	std::cout << "float: " << _f << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(_f) << std::endl;
+	std::cout << GREY << "converted from float" << RESET << std::endl;
+	return;
+}
+
+
+void Converter::convertFromDouble() {
+
+	
+	if (!exception_c)
+		std::cout << "char: '" << static_cast<char>(_d) << "'" << std::endl;
+	if (!exception_i)
+		std::cout << "int: " << static_cast<int>(_d) << std::endl;
+	if (!exception_f)
+		std::cout << "float: " << static_cast<float>(_d) << "f" << std::endl;
+	std::cout << "double: " << _d << std::endl;
+	std::cout << GREY << "converted from double" << RESET << std::endl;
+	return;
 }
