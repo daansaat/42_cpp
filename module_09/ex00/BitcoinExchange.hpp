@@ -1,12 +1,13 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
+# include <fstream>
 # include <iostream>
+# include <map>
 # include <stdexcept>
+# include <string>
+# include <sstream>
 
-
-class BitcoinExchange {
-
-
-};
+std::map<std::string, double> readExchangeRateFromFile();
+void processInput(std::string filename);
 
 #endif

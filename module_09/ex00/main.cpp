@@ -6,7 +6,7 @@ int main (int argc, char **argv) {
 		if (argc != 2) {
 			throw std::invalid_argument("Wrong number of arguments. Expected 1 argument.");
 		}
-		
+		processInput(argv[1]);
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;
