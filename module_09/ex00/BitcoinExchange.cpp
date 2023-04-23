@@ -1,1 +1,1 @@
-test
+#include "BitcoinExchange.hpp"
