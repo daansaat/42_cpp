@@ -61,22 +61,27 @@ static bool lowerDate(std::string& date) {
 	int year, month, day;
 	char delimiter;
 	iss >> year >> delimiter >> month >> delimiter >> day;
-	day--;
-	if (day == 0) {
-		day = 31;
-		month--;
-		if (month == 0) {
-			month = 12;
-			year--;
-			if (year < 2009)
-				return false;
-		}
+	if (year > 2022) {
+		date = "2022-03-29";
 	}
-	std::ostringstream oss;
-	oss << year << delimiter 
-	<< std::setfill('0') << std::setw(2) << month << delimiter 
-	<< std::setfill('0') << std::setw(2) << day;
-	date = oss.str();
+	else {
+		day--;
+		if (day == 0) {
+			day = 31;
+			month--;
+			if (month == 0) {
+				month = 12;
+				year--;
+				if (year < 2009)
+					return false;
+			}
+		}
+		std::ostringstream oss;
+		oss << year << delimiter 
+		<< std::setfill('0') << std::setw(2) << month << delimiter 
+		<< std::setfill('0') << std::setw(2) << day;
+		date = oss.str();
+	}
 	return true;
 }
 
