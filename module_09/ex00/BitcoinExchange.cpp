@@ -119,7 +119,7 @@ void processInput(std::string filename) {
 			continue;
 		else {
 			std::cout << date << " => " << value << " = "
-					  << std::stod(value) * getExchangeRate(date, database) << std::endl;
+			<< std::stod(value) * getExchangeRate(date, database) << std::endl;
 		}
 	}
 }
