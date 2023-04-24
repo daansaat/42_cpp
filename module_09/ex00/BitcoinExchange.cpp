@@ -118,12 +118,8 @@ void processInput(std::string filename) {
 		else if (!isValidValue(value))
 			continue;
 		else {
-			std::cout << date 
-					  << " => " 
-					  << value 
-					  << " = "
-					  << std::stod(value) * getExchangeRate(date, database) 
-					  << std::endl;
+			std::cout << date << " => " << value << " = "
+				<< std::stod(value) * getExchangeRate(date, database) << std::endl;
 		}
 	}
 }
