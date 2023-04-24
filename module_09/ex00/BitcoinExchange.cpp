@@ -1,6 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-std::map<std::string, double> readExchangeRateFromFile() {
+static std::map<std::string, double> readExchangeRateFromFile() {
 
 	std::string filename = "data.csv";
 	std::ifstream file(filename);
@@ -16,7 +16,7 @@ std::map<std::string, double> readExchangeRateFromFile() {
 	return database;
 }
 
-bool isValidDate(std::string& date) {
+static bool isValidDate(std::string& date) {
 
 	std::istringstream iss(date);
 	int year, month, day;
@@ -35,20 +35,27 @@ bool isValidDate(std::string& date) {
 	return true;
 }
 
-bool isValidValue(std::string& value) {
+static bool isValidValue(std::string& value) {
 
 	float number;
 	try {
 		number = std::stof(value);
 	} catch (std::exception& e) {
+		std::cerr << "Error: Invalid value: " << value << std::endl;
 		return false;
 	}
-	if (number < 0 || number > 1000)
+	if (number < 0) {
+		std::cerr << "Error: Not a positive number: " << value << std::endl;
 		return false;
+	}
+	if (number > 1000) {
+		std::cerr << "Error: Too large a number: " << value << std::endl;
+		return false;
+	}
 	return true;
 }
 
-bool lowerDate(std::string& date) {
+static bool lowerDate(std::string& date) {
 
 	std::istringstream iss(date);
 	int year, month, day;
@@ -61,20 +68,23 @@ bool lowerDate(std::string& date) {
 		if (month == 0) {
 			month = 12;
 			year--;
-			if (year == 0)
+			if (year < 2009)
 				return false;
 		}
 	}
 	std::ostringstream oss;
-	oss << year << delimiter << month << delimiter << day;
+	oss << year << delimiter 
+	<< std::setfill('0') << std::setw(2) << month << delimiter 
+	<< std::setfill('0') << std::setw(2) << day;
 	date = oss.str();
 	return true;
 }
 
-double getExchangeRate(std::string& date, std::map<std::string, double>& database) {
+static double getExchangeRate(std::string& date, std::map<std::string, double>& database) {
 
 	std::map<std::string, double>::iterator it;
-	for (it = database.find(date);;) {
+	for (;;) {
+		it = database.find(date);
 		if (it != database.end())
 			return it->second;
 		if (!lowerDate(date))
@@ -101,10 +111,14 @@ void processInput(std::string filename) {
 		else if (!isValidDate(date))
 			std::cerr << "Error: Invalid date: " << date << std::endl;
 		else if (!isValidValue(value))
-			std::cerr << "Error: Invalid value: " << value << std::endl;
+			continue;
 		else {
-			double result = std::stod(value) * getExchangeRate(date, database);
-			std::cout << date << " => " << value << " = " << result << std::endl;
+			std::cout << date 
+					  << " => " 
+					  << value 
+					  << " = "
+					  << std::stod(value) * getExchangeRate(date, database) 
+					  << std::endl;
 		}
 	}
 }
