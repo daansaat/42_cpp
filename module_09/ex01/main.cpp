@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 		int answer = evaluateRPN(argv[1]);
 		std::cout << answer << std::endl;
 	} catch (const std::exception& e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		return 1;
 	}
 
