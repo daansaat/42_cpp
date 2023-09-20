@@ -11,7 +11,7 @@
 
 # define THRESHOLD 16
 
-void sort(std::vector<int>& vec, int p, int r);
+void sort(std::vector<int>& vec, int start, int end);
 void sort(std::list<int>& lst, int start, int end);
 
 #endif
