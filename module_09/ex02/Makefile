@@ -1,7 +1,6 @@
 NAME = PmergeMe
 CXX = g++
-FLAG = -std=c++98
-# FLAG = -Wall -Werror -Wextra -std=c++98
+FLAG = -Wall -Werror -Wextra -std=c++98
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:%.cpp=obj/%.o)
 HEAD = $(wildcard *.hpp)

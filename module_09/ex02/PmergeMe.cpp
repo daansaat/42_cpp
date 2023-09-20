@@ -72,8 +72,8 @@ static void merge(std::list<int>& lst, int start, int split, int end) {
 
 	int Llen = split - start + 1;
 	int Rlen = end - split;
-	std::list<int> Lside(*std::next(lst.begin(), start), *std::next(lst.begin(), split + 1));
-	std::list<int> Rside(*std::next(lst.begin(), split + 1), *std::next(lst.begin(), end + 1));
+	std::list<int> Lside(std::next(lst.begin(), start), std::next(lst.begin(), split + 1));
+	std::list<int> Rside(std::next(lst.begin(), split + 1), std::next(lst.begin(), end + 1));
 	int Lindex = 0;
 	int Rindex = 0;
 	for (int i = start; i <= end; i++) {

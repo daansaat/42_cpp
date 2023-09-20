@@ -28,32 +28,42 @@ static void displayTime(std::clock_t startTime, std::clock_t endTime, int size, 
 int main(int argc, char **argv) {
 
 	try {
-		if (argc < 2)
+		if (argc < 3)
 			throw std::invalid_argument("Wrong number of arguments. Expected atleast 2 arguments.");
+
 		std::vector<int> vec;
 		std::list<int> lst;
+
 		for (int i = 1; i < argc; i++) {
 			std::size_t pos = 0;
 			std::string arg = argv[i];
-			int number = std::stoi(arg, &pos);
-			if (number < 0 || pos != arg.length())
+			try {
+				int number = std::stoi(arg, &pos);
+				if (number < 0 || pos != arg.length())
+					throw std::runtime_error("Invalid input: " + arg);
+				vec.push_back(number);
+				lst.push_back(number);
+			} catch (std::exception) {
 				throw std::runtime_error("Invalid input: " + arg);
-			vec.push_back(number);
-			lst.push_back(number);
+			}
 		}
-		// displaySequence("Before: ", vec);
-		std::clock_t startTime = std::clock();
-		// sort(vec, 0, vec.size() - 1);
-		std::clock_t endTime = std::clock();
-		// displaySequence("After: ", vec);
-		// displayTime(startTime, endTime, vec.size(), "std::vector<int> : ");
 
+		std::cout << std::endl;
+		displaySequence("Before: ", vec);
+		std::clock_t startTime = std::clock();
+		sort(vec, 0, vec.size() - 1);
+		std::clock_t endTime = std::clock();
+		displaySequence("After: ", vec);
+		displayTime(startTime, endTime, vec.size(), "std::vector<int> = ");
+		std::cout << std::endl;
 		displaySequence("Before: ", lst);
 		startTime = std::clock();
 		sort(lst, 0, lst.size() - 1);
 		endTime = std::clock();
 		displaySequence("After: ", lst);
-		displayTime(startTime, endTime, lst.size(), "std::list<int> : ");
+		displayTime(startTime, endTime, lst.size(), "std::list<int> = ");
+		std::cout << std::endl;
+
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 		return 1;
