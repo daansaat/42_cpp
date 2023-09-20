@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
 					throw std::runtime_error("Invalid input: " + arg);
 				vec.push_back(number);
 				lst.push_back(number);
-			} catch (std::exception) {
+			} catch (std::exception& e) {
 				throw std::runtime_error("Invalid input: " + arg);
 			}
 		}

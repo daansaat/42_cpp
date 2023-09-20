@@ -39,7 +39,11 @@ static bool isValidValue(std::string& value) {
 
 	float number;
 	try {
-		number = std::stof(value);
+		std::size_t pos = 0;
+		number = std::stof(value, &pos);
+		if (pos != value.length()) {
+			throw std::exception();
+		}
 	} catch (std::exception& e) {
 		std::cerr << "Error: Invalid value: " << value << std::endl;
 		return false;
